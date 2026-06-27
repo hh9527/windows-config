@@ -26,7 +26,7 @@ Windows 上执行：
 irm "https://raw.githubusercontent.com/hh9527/windows-config/main/bootstrap.ps1" | iex
 ```
 
-`bootstrap.ps1` 会下载 `spmw` latest release 的 `tarball.tar.gz` 到 `~/.spmw/bootstrap/`，从完整配置中过滤出只包含 `main`、`spmw` 和正式 CLI link 的 bootstrap config，然后先用 bootstrap CLI 安装正式 `spmw-cli.ps1`，再切换到正式 CLI 完成完整安装。
+`bootstrap.ps1` 会下载 `spmw` latest release 的 `spmw.tar.gz` 到 `~/.spmw/bootstrap/`，从完整配置中过滤出只包含 `main`、`spmw` 和正式 CLI link 的 bootstrap config，然后先用 bootstrap CLI 安装正式 `spmw-cli.ps1`，再切换到正式 CLI 完成完整安装。
 
 ## 同步方式
 
@@ -48,7 +48,7 @@ cd ../spmw
 scripts/make-dist.sh dev target
 
 mkdir -p /tmp/spmw-bootstrap
-cp target/tarball.*.tar.gz target/sha256.txt /tmp/spmw-bootstrap/
+cp target/spmw.*.tar.gz target/spmw.tar.gz.sha256 /tmp/spmw-bootstrap/
 cp ../windows-config/bootstrap.ps1 ../windows-config/config.spmw.json /tmp/spmw-bootstrap/
 python3 -m http.server 10922 --bind 127.0.0.1 --directory /tmp/spmw-bootstrap
 ```

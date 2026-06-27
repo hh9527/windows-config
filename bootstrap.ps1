@@ -2,7 +2,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 $WindowsConfigUrl = "https://raw.githubusercontent.com/hh9527/windows-config/main/config.spmw.json"
-$SpmwTarballUrl = "https://github.com/hh9527/spmw/releases/latest/download/tarball.tar.gz"
+$SpmwTarballUrl = "https://github.com/hh9527/spmw/releases/latest/download/spmw.tar.gz"
 
 $UserProfile = [Environment]::GetFolderPath("UserProfile")
 $SpmwRoot = Join-Path $UserProfile ".spmw"
@@ -15,7 +15,7 @@ if ([string]::IsNullOrWhiteSpace($env:SPMW_DEV_HOST)) {
 } else {
     $BaseUrl = "http://$env:SPMW_DEV_HOST"
     $ConfigUrl = "$BaseUrl/config.spmw.json"
-    $SpmwSha256Url = "$BaseUrl/sha256.txt"
+    $SpmwSha256Url = "$BaseUrl/spmw.tar.gz.sha256"
 }
 
 function Ensure-Directory {
@@ -78,7 +78,7 @@ if ($config.links -and $config.links."bin:spmw-cli.ps1") {
 
 if (-not [string]::IsNullOrWhiteSpace($env:SPMW_DEV_HOST)) {
     $sha256 = Invoke-ReadText -Url $SpmwSha256Url
-    $SpmwTarballUrl = "$BaseUrl/tarball.$sha256.tar.gz"
+    $SpmwTarballUrl = "$BaseUrl/spmw.$sha256.tar.gz"
 }
 
 $tarball = Join-Path $SpmwRoot "bootstrap.tar.gz"
