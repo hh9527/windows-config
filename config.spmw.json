@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "packages": {
+    "CascadiaNextSC": {
+      "variables": [
+        {
+          "version": "1.0.1"
+        }
+      ],
+      "install": [
+        {
+          "action": "InstallFonts",
+          "src": "https://github.com/LiLittleCat/Cascadia-Next-Nerd-Font/releases/download/v<version>/CascadiaNextSCNF-ttc.tar.gz"
+        }
+      ]
+    },
+    "WezTerm": {
+      "variables": [
+        {
+          "sha256": {
+            "src": "https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-windows-nightly.zip.sha256"
+          }
+        },
+        {
+          "version": "nightly-<sha256>"
+        }
+      ],
+      "install": [
+        {
+          "action": "Unpack",
+          "file": "WezTerm-<sha256>.zip",
+          "src": "https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-windows-nightly.zip",
+          "verify": {
+            "sha256": "<sha256>"
+          },
+          "strip": 1
+        }
+      ]
+    },
+    "TermSCP": {
+      "variables": [
+        {
+          "version": "1.1.1"
+        }
+      ],
+      "install": [
+        {
+          "action": "Unpack",
+          "src": "https://github.com/veeso/termscp/releases/download/v<version>/termscp-v<version>-x86_64-pc-windows-msvc.zip"
+        }
+      ]
+    }
+  },
+  "links": {
+    "user:.wezterm.lua": "pkgs.main:user/.wezterm.lua",
+    "bin:termscp.exe": "pkgs.TermSCP:termscp.exe"
+  },
+  "shortcuts": {
+    "apps:WezTerm": {
+      "program": "pkgs.WezTerm:wezterm-gui.exe",
+      "cwd": "pkgs.WezTerm"
+    }
+  }
+}
