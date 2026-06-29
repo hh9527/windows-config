@@ -1,45 +1,8 @@
 {
-  "schema": 1,
+  "schema": 2,
   "packages": {
-    "main": {
-      "variables": [
-        {
-          "commit": {
-            "src": "https://github.com/hh9527/windows-config/commits/main.atom",
-            "ty": "CommitFromGithubAtom"
-          }
-        }
-      ],
-      "install": [
-        {
-          "action": "InstallMainConfig",
-          "file": "windows-config-<commit>.tar.gz",
-          "src": "https://github.com/hh9527/windows-config/archive/<commit>.tar.gz"
-        }
-      ]
-    },
-    "spmw": {
-      "variables": [
-        {
-          "version": {
-            "src": "https://github.com/hh9527/spmw/releases/latest/download/VERSION.txt"
-          }
-        }
-      ],
-      "install": [
-        {
-          "action": "Unpack",
-          "src": "https://github.com/hh9527/spmw/releases/download/<version>/spmw.tar.gz",
-          "verify": {
-            "sha256": {
-              "src": "https://github.com/hh9527/spmw/releases/download/<version>/spmw.tar.gz.sha256"
-            }
-          }
-        }
-      ]
-    },
     "CascadiaNextSC": {
-      "variables": [
+      "defs": [
         {
           "version": "1.0.1"
         }
@@ -52,7 +15,7 @@
       ]
     },
     "WezTerm": {
-      "variables": [
+      "defs": [
         {
           "sha256": {
             "src": "https://github.com/wezterm/wezterm/releases/download/nightly/WezTerm-windows-nightly.zip.sha256"
@@ -75,7 +38,7 @@
       ]
     },
     "TermSCP": {
-      "variables": [
+      "defs": [
         {
           "version": "1.1.1"
         }
@@ -89,8 +52,7 @@
     }
   },
   "links": {
-    "bin:spmw-cli.ps1": "pkgs.spmw:bin/spmw-cli.ps1",
-    "user:.wezterm.lua": "pkgs.main:user/.wezterm.lua",
+    "user:.wezterm.lua": "pkgs.source:user/.wezterm.lua",
     "bin:termscp.exe": "pkgs.TermSCP:termscp.exe"
   },
   "shortcuts": {
