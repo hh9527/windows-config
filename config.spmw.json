@@ -51,14 +51,16 @@
       ]
     }
   },
-  "links": {
-    "user:.wezterm.lua": "pkgs.source:user/.wezterm.lua",
-    "bin:termscp.exe": "pkgs.TermSCP:termscp.exe"
+  "bins": {
+    "termscp": "pkgs.TermSCP:termscp.exe"
   },
-  "shortcuts": {
-    "apps:WezTerm": {
+  "apps": {
+    "WezTerm": {
       "program": "pkgs.WezTerm:wezterm-gui.exe",
       "cwd": "pkgs.WezTerm"
     }
+  },
+  "sync": {
+    "user:.wezterm.lua": "pkgs.source:user/.wezterm.lua"
   }
 }
