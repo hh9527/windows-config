@@ -80,6 +80,7 @@ local config = {
     },
   },
   keys = {
+    { key = 'Enter', mods = 'SHIFT', action = act.SendString('\x0a') },
     { key = 'Tab', mods = 'CTRL', action = act.ActivateLastTab },
     { key = 'Space', mods = 'ALT', action = act.ActivateKeyTable {
       name = 'CTRL',
